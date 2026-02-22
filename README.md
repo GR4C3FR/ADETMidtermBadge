@@ -42,16 +42,16 @@ The application consists of the following modules:
 | Step 2 - Inheritance | Create 3 concrete modules implementing the abstract class. | ✅ Achieved - BMI Checker, Expense Tracker, Grade Calculator extend the shared module. |
 | | Each module must present a complete UI | ✅ Achieved - All modules display independent UI screens with proper input, buttons, and output. |
 | Step 3 - Encapsulation | Private state management in each module. | ✅ Achieved - Each module uses private variables for inputs and results. |
-| | Controlled updates via methods (compute/reset/add) | ✅ Achieved - Modules update state internally; results cannot be edited directly from outside. |
+| | Controlled updates via methods (compute/reset/add) | ✅ Achieved - Modules update state internally, results cannot be edited directly from outside. |
 | Step 4 - Widget Literacy | Use minimum required widgets: Scaffold, AppBar, Text, Icon, Container/Card, TextField, Button, ListView, SnackBar/Dialog, Navigation. | ✅ Achieved - All modules include appropriate widgets across screens. |
-| | Use Slider or Dropdown for configurable values | ✅ Achieved - Slider or Dropdown is used for tip %, grading, or other module-specific settings. |
+| | Use Slider or Dropdown for configurable values | ✅ Achieved - Slider used for Tip%, and Dropdown is used on BMI Height Unit |
 | Step 5 - Polymorphism | Use a polymorphic collection of modules to generate navigation items and display screens dynamically. | ✅ Achieved - All modules stored in a list and navigated via BottomNavigationBar. |
 | Step 6 - Dynamic Invocation | Display module title, icon, and UI dynamically when switching tabs. | ✅ Achieved - Navigation correctly updates UI based on selected module. |
 
 
 ---
-
-
+&nbsp;
+&nbsp;
 ## 🚀 How to Run the Project
 
 ```cmd
@@ -71,6 +71,3 @@ flutter pub get
 flutter run
 
 :: 6. Select a device (Chrome, Windows, Android Emulator, Edge, etc.)
-
-
-
