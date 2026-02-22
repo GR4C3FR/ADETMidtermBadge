@@ -12,16 +12,6 @@
 
 ---
 
-## Assigned Roles & Tasks
-
-- **Charles Daniel Garcia** - Project Lead, Step 1 & Step 2  
-- **James Jethro Dizon** - Step 3 Implementation  
-- **Ericka Mae Gavino** - Step 4 Implementation  
-- **Alexander Manabat** - Step 5 Implementation & Documentation  
-- **Carla Joves** - Step 6 Implementation & Documentation  
-
----
-
 ## Selected Modules
 
 The application consists of the following modules:
@@ -29,6 +19,16 @@ The application consists of the following modules:
 - ✅ **BMI Checker** - Calculates Body Mass Index and displays health classification  
 - ✅ **Expense Tracker** - Tracks and manages daily expenses  
 - ✅ **Grade Calculator** - Computes academic grades based on user input  
+
+---
+
+## Assigned Roles & Tasks
+
+- **Charles Daniel Garcia** - Project Lead, Step 1 & Step 2  
+- **James Jethro Dizon** - Step 3 Implementation  
+- **Ericka Mae Gavino** - Step 4 Implementation  
+- **Alexander Manabat** - Step 5 Implementation & Documentation  
+- **Carla Joves** - Step 6 Implementation & Documentation  
 
 ---
 
@@ -51,6 +51,10 @@ The application consists of the following modules:
 | Step 5 - Polymorphism | Use a polymorphic collection of modules to generate navigation items and display screens dynamically. | ✅ Achieved - All modules stored in a list and navigated via BottomNavigationBar. |
 | Step 6 - Dynamic Invocation | Display module title, icon, and UI dynamically when switching tabs. | ✅ Achieved - Navigation correctly updates UI based on selected module. |
 
+
+---
+
+
 ## 🚀 How to Run the Project
 
 ```cmd
@@ -70,3 +74,6 @@ flutter pub get
 flutter run
 
 :: 6. Select a device (Chrome, Windows, Android Emulator, Edge, etc.)
+
+
+
