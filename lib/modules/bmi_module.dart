@@ -8,50 +8,42 @@ class BmiModule extends ToolModule {
   @override
   IconData get icon => Icons.monitor_weight_outlined;
 
+  final String userName;
+
+  BmiModule({required this.userName});
+
   @override
-  Widget buildBody(BuildContext context) => const _BmiScreen();
+  Widget buildBody(BuildContext context) => Scaffold(
+    appBar: AppBar(
+      title: Row(children: [Icon(icon), const SizedBox(width: 8), Text(title)]),
+    ),
+    body: _BmiScreen(userName: userName),
+  );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// _BmiScreen — Full BMI calculator screen
-//
-// Widgets used:
-//   TextField + TextEditingController  (height & weight inputs)
-//   DropdownButton                     (choose height unit: cm or m)
-//   ElevatedButton                     (Compute, Reset)
-//   Card                               (result display)
-//   Icon                               (status icon on result card)
-//   ListView                           (history of past calculations)
-//   SnackBar                           (error messages)
-// ─────────────────────────────────────────────────────────────────────────────
 class _BmiScreen extends StatefulWidget {
-  const _BmiScreen();
+  final String userName;
+  const _BmiScreen({required this.userName});
 
   @override
   State<_BmiScreen> createState() => _BmiScreenState();
 }
 
 class _BmiScreenState extends State<_BmiScreen> {
-  // Controllers hold what the user types in each field
   final TextEditingController _heightCtrl = TextEditingController();
   final TextEditingController _weightCtrl = TextEditingController();
 
-  // DropdownButton value — user picks "cm" or "m"
   String _unit = 'cm';
 
-  // Stores the most recent BMI result (null = not calculated yet)
   double? _bmiValue;
   String _bmiCategory = '';
 
-  // History list — each entry is a short string like "22.5 — Normal"
   final List<String> _history = [];
 
-  // ── Compute ──────────────────────────────────────────────────────────────
   void _compute() {
     double? h = double.tryParse(_heightCtrl.text);
     double? w = double.tryParse(_weightCtrl.text);
 
-    // Validate inputs
     if (h == null || w == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please enter valid numbers.')),
@@ -65,11 +57,14 @@ class _BmiScreenState extends State<_BmiScreen> {
       return;
     }
 
-    // Convert height to metres for the BMI formula: weight / height^2
-    final double heightInMetres = _unit == 'cm' ? h / 100 : h;
+    double heightInMetres;
+    if (_unit == 'cm') {
+      heightInMetres = h / 100;
+    } else {
+      heightInMetres = h;
+    }
     final double bmi = w / (heightInMetres * heightInMetres);
 
-    // Determine category based on standard BMI ranges
     String category;
     if (bmi < 18.5) {
       category = 'Underweight';
@@ -84,12 +79,10 @@ class _BmiScreenState extends State<_BmiScreen> {
     setState(() {
       _bmiValue = bmi;
       _bmiCategory = category;
-      // Add to history, newest entry at the top
       _history.insert(0, '${bmi.toStringAsFixed(1)} — $category');
     });
   }
 
-  // ── Reset ─────────────────────────────────────────────────────────────────
   void _reset() {
     setState(() {
       _heightCtrl.clear();
@@ -100,7 +93,6 @@ class _BmiScreenState extends State<_BmiScreen> {
     });
   }
 
-  // ── Helper: pick an icon based on BMI category ────────────────────────────
   IconData _categoryIcon(String category) {
     switch (category) {
       case 'Underweight':
@@ -121,23 +113,30 @@ class _BmiScreenState extends State<_BmiScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // ── Instruction text ──────────────────────────────────────────────
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: Text(
+              'Hi, ${widget.userName}!',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          ),
           const Text(
             'Enter your height and weight to check your BMI.',
             style: TextStyle(fontSize: 14),
           ),
           const SizedBox(height: 16),
 
-          // ── Height unit selector (DropdownButton) ─────────────────────────
           Row(
             children: [
               const Text('Height unit: '),
               const SizedBox(width: 8),
-              // DropdownButton — lets the user choose between cm and m
               DropdownButton<String>(
                 value: _unit,
                 items: const [
-                  DropdownMenuItem(value: 'cm', child: Text('Centimetres (cm)')),
+                  DropdownMenuItem(
+                    value: 'cm',
+                    child: Text('Centimetres (cm)'),
+                  ),
                   DropdownMenuItem(value: 'm', child: Text('Metres (m)')),
                 ],
                 onChanged: (value) {
@@ -148,7 +147,6 @@ class _BmiScreenState extends State<_BmiScreen> {
           ),
           const SizedBox(height: 8),
 
-          // ── Height input ──────────────────────────────────────────────────
           TextField(
             controller: _heightCtrl,
             keyboardType: TextInputType.number,
@@ -160,7 +158,6 @@ class _BmiScreenState extends State<_BmiScreen> {
           ),
           const SizedBox(height: 12),
 
-          // ── Weight input ──────────────────────────────────────────────────
           TextField(
             controller: _weightCtrl,
             keyboardType: TextInputType.number,
@@ -172,7 +169,6 @@ class _BmiScreenState extends State<_BmiScreen> {
           ),
           const SizedBox(height: 16),
 
-          // ── Action buttons ────────────────────────────────────────────────
           Row(
             children: [
               Expanded(
@@ -198,7 +194,6 @@ class _BmiScreenState extends State<_BmiScreen> {
           ),
           const SizedBox(height: 20),
 
-          // ── Result Card — only shown after a successful calculation ────────
           if (_bmiValue != null)
             Card(
               elevation: 3,
@@ -219,7 +214,6 @@ class _BmiScreenState extends State<_BmiScreen> {
               ),
             ),
 
-          // ── History section — ListView of past results ─────────────────────
           if (_history.isNotEmpty) ...[
             const SizedBox(height: 20),
             const Text(
@@ -227,8 +221,6 @@ class _BmiScreenState extends State<_BmiScreen> {
               style: TextStyle(fontWeight: FontWeight.bold, fontSize: 15),
             ),
             const SizedBox(height: 8),
-            // shrinkWrap + NeverScrollableScrollPhysics so it fits inside
-            // SingleChildScrollView without conflicting scroll directions
             ListView.builder(
               shrinkWrap: true,
               physics: const NeverScrollableScrollPhysics(),

@@ -8,48 +8,41 @@ class ExpenseSplitterModule extends ToolModule {
   @override
   IconData get icon => Icons.receipt_long_outlined;
 
+  final String userName;
+
+  ExpenseSplitterModule({required this.userName});
+
   @override
-  Widget buildBody(BuildContext context) => const _ExpenseScreen();
+  Widget buildBody(BuildContext context) => Scaffold(
+    appBar: AppBar(
+      title: Row(children: [Icon(icon), const SizedBox(width: 8), Text(title)]),
+    ),
+    body: _ExpenseScreen(userName: userName),
+  );
 }
 
-// ─────────────────────────────────────────────────────────────────────────────
-// _ExpenseScreen — Bill splitter with tip slider and itemised breakdown
-//
-// Widgets used:
-//   TextField + TextEditingController  (total bill, number of people)
-//   Slider                             (tip percentage 0–30%)
-//   ElevatedButton                     (Compute, Reset)
-//   Card                               (result summary card)
-//   Icon                               (card decoration)
-//   ListView                           (itemised breakdown list)
-//   SnackBar                           (input validation errors)
-// ─────────────────────────────────────────────────────────────────────────────
 class _ExpenseScreen extends StatefulWidget {
-  const _ExpenseScreen();
+  final String userName;
+  const _ExpenseScreen({required this.userName});
 
   @override
   State<_ExpenseScreen> createState() => _ExpenseScreenState();
 }
 
 class _ExpenseScreenState extends State<_ExpenseScreen> {
-  // Controllers for the two text inputs
   final TextEditingController _totalCtrl = TextEditingController();
   final TextEditingController _paxCtrl = TextEditingController();
 
-  // Slider value for tip percentage (starts at 0%)
   double _tipPercent = 0;
 
-  // Calculated values (null before any calculation)
   double? _tipAmount;
   double? _grandTotal;
   double? _perPerson;
 
-  // ── Compute ────────────────────────────────────────────────────────────────
   void _compute() {
     double? total = double.tryParse(_totalCtrl.text);
     int? pax = int.tryParse(_paxCtrl.text);
 
-    // Input validation
     if (total == null || pax == null) {
       ScaffoldMessenger.of(context).showSnackBar(
         const SnackBar(content: Text('Please enter valid numbers.')),
@@ -58,7 +51,9 @@ class _ExpenseScreenState extends State<_ExpenseScreen> {
     }
     if (total <= 0 || pax <= 0) {
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Bill amount and people count must be above 0.')),
+        const SnackBar(
+          content: Text('Bill amount and people count must be above 0.'),
+        ),
       );
       return;
     }
@@ -70,7 +65,6 @@ class _ExpenseScreenState extends State<_ExpenseScreen> {
     });
   }
 
-  // ── Reset ──────────────────────────────────────────────────────────────────
   void _reset() {
     setState(() {
       _totalCtrl.clear();
@@ -84,15 +78,26 @@ class _ExpenseScreenState extends State<_ExpenseScreen> {
 
   @override
   Widget build(BuildContext context) {
-    // Build breakdown rows only when results are available
     final List<Map<String, String>> breakdown = _perPerson == null
         ? []
         : [
-            {'label': 'Bill amount', 'value': '₱${double.parse(_totalCtrl.text).toStringAsFixed(2)}'},
-            {'label': 'Tip (${_tipPercent.toStringAsFixed(0)}%)', 'value': '₱${_tipAmount!.toStringAsFixed(2)}'},
-            {'label': 'Grand total', 'value': '₱${_grandTotal!.toStringAsFixed(2)}'},
+            {
+              'label': 'Bill amount',
+              'value': '₱${double.parse(_totalCtrl.text).toStringAsFixed(2)}',
+            },
+            {
+              'label': 'Tip (${_tipPercent.toStringAsFixed(0)}%)',
+              'value': '₱${_tipAmount!.toStringAsFixed(2)}',
+            },
+            {
+              'label': 'Grand total',
+              'value': '₱${_grandTotal!.toStringAsFixed(2)}',
+            },
             {'label': 'Number of people', 'value': _paxCtrl.text},
-            {'label': 'Each person pays', 'value': '₱${_perPerson!.toStringAsFixed(2)}'},
+            {
+              'label': 'Each person pays',
+              'value': '₱${_perPerson!.toStringAsFixed(2)}',
+            },
           ];
 
     return SingleChildScrollView(
@@ -100,14 +105,19 @@ class _ExpenseScreenState extends State<_ExpenseScreen> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.stretch,
         children: [
-          // ── Instruction ────────────────────────────────────────────────────
+          Padding(
+            padding: const EdgeInsets.only(bottom: 12.0),
+            child: Text(
+              'Hi, ${widget.userName}!',
+              style: Theme.of(context).textTheme.headlineSmall,
+            ),
+          ),
           const Text(
             'Enter the total bill and number of people to split it.',
             style: TextStyle(fontSize: 14),
           ),
           const SizedBox(height: 16),
 
-          // ── Total bill input ───────────────────────────────────────────────
           TextField(
             controller: _totalCtrl,
             keyboardType: TextInputType.number,
@@ -119,7 +129,6 @@ class _ExpenseScreenState extends State<_ExpenseScreen> {
           ),
           const SizedBox(height: 12),
 
-          // ── Number of people input ─────────────────────────────────────────
           TextField(
             controller: _paxCtrl,
             keyboardType: TextInputType.number,
@@ -131,7 +140,6 @@ class _ExpenseScreenState extends State<_ExpenseScreen> {
           ),
           const SizedBox(height: 16),
 
-          // ── Tip percentage slider ──────────────────────────────────────────
           Row(
             children: [
               const Icon(Icons.percent, size: 20),
@@ -143,7 +151,6 @@ class _ExpenseScreenState extends State<_ExpenseScreen> {
                   min: 0,
                   max: 30,
                   divisions: 30,
-                  // label shown in the bubble while dragging
                   label: '${_tipPercent.toStringAsFixed(0)}%',
                   onChanged: (v) => setState(() => _tipPercent = v),
                 ),
@@ -152,7 +159,6 @@ class _ExpenseScreenState extends State<_ExpenseScreen> {
           ),
           const SizedBox(height: 8),
 
-          // ── Action buttons ─────────────────────────────────────────────────
           Row(
             children: [
               Expanded(
@@ -178,7 +184,6 @@ class _ExpenseScreenState extends State<_ExpenseScreen> {
           ),
           const SizedBox(height: 20),
 
-          // ── Result summary card ────────────────────────────────────────────
           if (_perPerson != null)
             Card(
               elevation: 3,
@@ -213,7 +218,6 @@ class _ExpenseScreenState extends State<_ExpenseScreen> {
               ),
             ),
 
-          // ── Itemised breakdown ListView ────────────────────────────────────
           if (breakdown.isNotEmpty) ...[
             const SizedBox(height: 16),
             const Text(
@@ -245,4 +249,3 @@ class _ExpenseScreenState extends State<_ExpenseScreen> {
     );
   }
 }
-
