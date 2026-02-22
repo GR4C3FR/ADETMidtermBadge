@@ -26,7 +26,7 @@ The application consists of the following modules:
 - **Charles Daniel Garcia** - Project Lead, Step 1 & Step 2  
 - **James Jethro Dizon** - Step 3 Implementation  
 - **Ericka Mae Gavino** - Step 4 Implementation  
-- **Alexander Manabat** - Step 5 Implementation & Documentation  
+- **Alexander Manabat** - Step 5 Implementation, Documentation & Video Demo
 - **Carla Joves** - Step 6 Implementation & Documentation  
 ---
 &nbsp;
@@ -52,20 +52,25 @@ The application consists of the following modules:
 &nbsp;
 ## 🚀 How to Run the Project
 
-```cmd
-:: 1. Clone the repository
-git clone https://github.com/GR4C3FR/MiniJiraBoard.git
+### 🚀 Instructions to Run the App
+```bash
 
-:: 2. Navigate to project folder
-cd MiniJiraBoard
 
-:: 3. Check Flutter setup and fix errors if needed
-flutter doctor
+# Open cmd and clone the repository
+git clone <repository-url>
 
-:: 4. Install project dependencies
+# Navigate to the project folder
+cd <project-folder>
+
+# Open the project in VS Code
+code .
+
+# Open VS terminal and install dependencies
 flutter pub get
 
-:: 5. Run the application
-flutter run
+# Enable Developer Mode to build with plugins
+start ms-settings:developers
 
-:: 6. Select a device (Chrome, Windows, Android Emulator, Edge, etc.)
+# Run the app
+flutter run
+```
