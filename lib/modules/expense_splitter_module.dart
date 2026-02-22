@@ -9,13 +9,21 @@ class ExpenseSplitterModule extends ToolModule {
   IconData get icon => Icons.receipt_long_outlined;
 
   final String userName;
+  final VoidCallback? onPersonalize;
 
-  ExpenseSplitterModule({required this.userName});
+  ExpenseSplitterModule({required this.userName, this.onPersonalize});
 
   @override
   Widget buildBody(BuildContext context) => Scaffold(
     appBar: AppBar(
       title: Row(children: [Icon(icon), const SizedBox(width: 8), Text(title)]),
+      actions: [
+        IconButton(
+          onPressed: onPersonalize,
+          tooltip: 'Personalize',
+          icon: const Icon(Icons.palette),
+        ),
+      ],
     ),
     body: _ExpenseScreen(userName: userName),
   );

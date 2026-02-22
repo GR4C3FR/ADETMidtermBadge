@@ -9,13 +9,21 @@ class GradeCalculatorModule extends ToolModule {
   IconData get icon => Icons.school_outlined;
 
   final String userName;
+  final VoidCallback? onPersonalize;
 
-  GradeCalculatorModule({required this.userName});
+  GradeCalculatorModule({required this.userName, this.onPersonalize});
 
   @override
   Widget buildBody(BuildContext context) => Scaffold(
     appBar: AppBar(
       title: Row(children: [Icon(icon), const SizedBox(width: 8), Text(title)]),
+      actions: [
+        IconButton(
+          onPressed: onPersonalize,
+          tooltip: 'Personalize',
+          icon: const Icon(Icons.palette),
+        ),
+      ],
     ),
     body: _GradeScreen(userName: userName),
   );

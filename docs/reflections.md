@@ -1,0 +1,16 @@
+Individual Reflection
+
+James Jethro Dizon: 
+Step 3 is assigned to me. One of the challenging parts for me is figuring out how to encapsulate the needed information for the badging activity. Another challenge, which is also the most difficult for me, is figuring out if I was inputting the proper structure for the internal logic as I cannot see the result clearly without the widgets still not being implemented yet, because implementation of the widgets is step 4 and it is not assigned to me. Another challenge is that I am instructed in the activity of no direct editing of results variable from outside the module. Despite these challenges, this step helped me have a better understanding of the importance of encapsulation in Flutter. It also broadened my understanding of how logic and the UI must coordinate properly in Flutter.
+
+Charles Daniel Garcia:
+I did step 1 and 2. It was really not that hard, but I had a slightly hard time because I’m not used to coding without seeing results right away, like on the UI or even just in the console. Making the abstract class felt a bit strange since nothing showed up yet, but it helped me see why planning and structure are important. After that, making the other modules was easier. I learned that using abstraction and inheritance helps, even if I can’t see anything on the screen at first.
+
+Ericka Mae Gavino: 
+Completing the Widget Literacy Checklist really helped me understand how to structure a real app using Dart, especially when it came to spreading widgets like the ListView and TextField across multiple screens. Learning to manage user input with a TextEditingController and providing feedback through a SnackBar made the whole experience feel much more interactive and "alive." It was definitely a challenge to get the BottomNavigationBar to sync up with different layouts, but seeing all those individual components finally flow together was a huge win for my progress.
+
+Carla Joves:
+I did step 6, which is Dynamic Invocation, as well as the documentation. The hardest part for me in step 6 was figuring out how to pass things like the user's name and theme colors into each tool without making the code messy. Instead of using "if-else" statements to switch screens, we used dynamic invocation to let theapp automatically grab the right tool from our list based on what the user clicked. It taught us how important polymorphism is because we can now add as many tools as we want just by dropping or adding them into the list, and the navigation will basically build itself.
+
+Alexander Manabat:
+Step 5 posed a significant challenge as implementing the polymorphic module list required an in-depth analysis of each team member's individual module and code organization. This required analyzing the logic, naming groups, and state management in order to implement my feature whereby it would subsequently function without impediment within the coupling of the overall navigation system and the dynamic display system. I then had to modify my own coding procedure to maintain compatibility with all other team members' implementation methods while still keeping my own module tidy and operational. Therefore, this taught me how vital it is to understand the coding style and logic utilized by others when taking different components and combining them into one application.

@@ -95,9 +95,15 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final modules = [
-      BmiModule(userName: widget.userName),
-      ExpenseSplitterModule(userName: widget.userName),
-      GradeCalculatorModule(userName: widget.userName),
+      BmiModule(userName: widget.userName, onPersonalize: _openSettingsDialog),
+      ExpenseSplitterModule(
+        userName: widget.userName,
+        onPersonalize: _openSettingsDialog,
+      ),
+      GradeCalculatorModule(
+        userName: widget.userName,
+        onPersonalize: _openSettingsDialog,
+      ),
     ];
 
     final current = modules[_selectedIndex];
@@ -116,11 +122,6 @@ class _HomeScreenState extends State<HomeScreen> {
                   BottomNavigationBarItem(icon: Icon(m.icon), label: m.title),
             )
             .toList(),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _openSettingsDialog,
-        tooltip: 'Personalize',
-        child: const Icon(Icons.palette),
       ),
     );
   }
