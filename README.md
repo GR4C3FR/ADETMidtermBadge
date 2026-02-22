@@ -33,14 +33,21 @@ The application consists of the following modules:
 ---
 
 ## ✅ Features Checklist
-| Step | Concept | How It Was Achieved in the App |
-|-----|--------|--------------------------------|
-| **Step 1** | Abstraction | A shared module contract ensures all tools follow the same structure for title, icon, and UI body, allowing consistent navigation and scalability. |
-| **Step 2** | Inheritance | BMI Checker, Expense Tracker, and Grade Calculator extend the shared module structure, enabling independent logic while keeping uniform behavior across modules. |
-| **Step 3** | Encapsulation | Each module manages private state such as inputs and computed results, with controlled updates through internal computation and reset methods to prevent external modification. |
-| **Step 4** | Widget Literacy | The app demonstrates proper Flutter widget usage including layout scaffolding, input handling, feedback mechanisms, list displays, and multi-page navigation using bottom navigation. |
-| **Step 5** | Polymorphism | All modules are stored in a single collection used to dynamically generate navigation items and switch screens, enabling flexible expansion without modifying core navigation logic. |
+## ✅ Feature Checklist (OOP + Flutter Implementation)
 
+| Step | Requirement | Achieved in App |
+|------|------------|----------------|
+| **Step 1 — Abstraction** | Create an abstract class that all mini-tools follow with title, icon, and buildBody structure. | ✅ Achieved — All modules implement a shared structure ensuring consistent navigation and UI contract. |
+| | Abstract getters: title, icon | ✅ Implemented in all modules. |
+| | Abstract method: buildBody(context) | ✅ Each module provides its own UI through buildBody. |
+| **Step 2 — Inheritance** | Create 3 concrete modules implementing the abstract class. | ✅ Achieved — BMI Checker, Expense Tracker, Grade Calculator extend the shared module. |
+| | Each module must present a complete UI | ✅ Achieved — All modules display independent UI screens with proper input, buttons, and output. |
+| **Step 3 — Encapsulation** | Private state management in each module. | ✅ Achieved — Each module uses private variables for inputs and results. |
+| | Controlled updates via methods (compute/reset/add) | ✅ Achieved — Modules update state internally; results cannot be edited directly from outside. |
+| **Step 4 — Widget Literacy** | Use minimum required widgets: Scaffold, AppBar, Text, Icon, Container/Card, TextField, Button, ListView, SnackBar/Dialog, Navigation. | ✅ Achieved — All modules include appropriate widgets across screens. |
+| | Use Slider or Dropdown for configurable values | ✅ Achieved — Slider or Dropdown is used for tip %, grading, or other module-specific settings. |
+| **Step 5 — Polymorphism** | Use a polymorphic collection of modules to generate navigation items and display screens dynamically. | ✅ Achieved — All modules stored in a list and navigated via BottomNavigationBar. |
+| **Step 6 — Dynamic Invocation** | Display module title, icon, and UI dynamically when switching tabs. | ✅ Achieved — Navigation correctly updates UI based on selected module. |
 ---
 
 ## 🚀 How to Run the Project
