@@ -17,7 +17,7 @@
 The application consists of the following modules:
 
 - ✅ **BMI Checker** - Calculates Body Mass Index and displays health classification  
-- ✅ **Expense Tracker** - Tracks and manages daily expenses  
+- ✅ **Expense Splitter** - Splits the total Expense into the number of people 
 - ✅ **Grade Calculator** - Computes academic grades based on user input  
 ---
 &nbsp;
@@ -37,7 +37,7 @@ The application consists of the following modules:
 | Step 1 - Abstraction | Create an abstract class that all mini-tools follow with title, icon, and buildBody structure. | ✅ Achieved - All modules implement a shared structure ensuring consistent navigation and UI contract. |
 | | Abstract getters: title, icon | ✅ Implemented in all modules. |
 | | Abstract method: buildBody(context) | ✅ Each module provides its own UI through buildBody. |
-| Step 2 - Inheritance | Create 3 concrete modules implementing the abstract class. | ✅ Achieved - BMI Checker, Expense Tracker, Grade Calculator extend the shared module. |
+| Step 2 - Inheritance | Create 3 concrete modules implementing the abstract class. | ✅ Achieved - BMI Checker, Expense Splitter, Grade Calculator extend the shared module. |
 | | Each module must present a complete UI | ✅ Achieved - All modules display independent UI screens with proper input, buttons, and output. |
 | Step 3 - Encapsulation | Private state management in each module. | ✅ Achieved - Each module uses private variables for inputs and results. |
 | | Controlled updates via methods (compute/reset/add) | ✅ Achieved - Modules update state internally, results cannot be edited directly from outside. |
