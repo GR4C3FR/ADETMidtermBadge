@@ -33,9 +33,6 @@ The application consists of the following modules:
 ---
 
 ## ✅ Features Checklist
-## ✅ Feature Checklist (OOP + Flutter Implementation)
-
-## ✅ Feature Checklist (OOP + Flutter Implementation)
 
 | Step | Requirement | Achieved in App |
 |------|------------|----------------|
