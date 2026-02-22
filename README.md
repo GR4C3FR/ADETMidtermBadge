@@ -1,6 +1,6 @@
 # Midterm Skill-Based Badging (midterm_badge)
 
----
+&nbsp;
 
 ## Group #4 - Member List
 
@@ -11,7 +11,7 @@
 - Alexander Manabat  
 
 ---
-
+&nbsp;
 ## Selected Modules
 
 The application consists of the following modules:
@@ -19,9 +19,9 @@ The application consists of the following modules:
 - ✅ **BMI Checker** - Calculates Body Mass Index and displays health classification  
 - ✅ **Expense Tracker** - Tracks and manages daily expenses  
 - ✅ **Grade Calculator** - Computes academic grades based on user input  
-
+&nbsp;
 ---
-
+&nbsp;
 ## Assigned Roles & Tasks
 
 - **Charles Daniel Garcia** - Project Lead, Step 1 & Step 2  
@@ -29,9 +29,9 @@ The application consists of the following modules:
 - **Ericka Mae Gavino** - Step 4 Implementation  
 - **Alexander Manabat** - Step 5 Implementation & Documentation  
 - **Carla Joves** - Step 6 Implementation & Documentation  
-
+&nbsp;
 ---
-
+&nbsp;
 ## ✅ Features Checklist
 
 | Step | Requirement | Achieved in App |
