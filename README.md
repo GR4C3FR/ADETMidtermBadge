@@ -50,8 +50,6 @@ The application consists of the following modules:
 ---
 &nbsp;
 &nbsp;
-## 🚀 How to Run the Project
-
 ### 🚀 Instructions to Run the App
 ```bash
 
