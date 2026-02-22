@@ -1,17 +1,64 @@
-# midterm_badge
+# Midterm Skill-Based Badging (midterm_badge)
 
-A new Flutter project.
+---
 
-## Getting Started
+## 👥 Group #4 — Member List
 
-This project is a starting point for a Flutter application.
+- James Jethro Dizon  
+- Charles Daniel Garcia  
+- Ericka Mae Gavino  
+- Carla Joves  
+- Alexander Manabat  
 
-A few resources to get you started if this is your first Flutter project:
+---
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
+## 🛠️ Assigned Roles & Tasks
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+- **Charles Daniel Garcia** — Project Lead, Step 1 & Step 2  
+- **James Jethro Dizon** — Step 3 Implementation  
+- **Ericka Mae Gavino** — Step 4 Implementation  
+- **Alexander Manabat** — Step 5 Implementation & Documentation  
+- **Carla Joves** — Step 6 Implementation & Documentation  
+
+---
+
+## 📦 Selected Modules
+
+The application consists of the following modules:
+
+- ✅ **BMI Checker** — Calculates Body Mass Index and displays health classification  
+- ✅ **Expense Tracker** — Tracks and manages daily expenses  
+- ✅ **Grade Calculator** — Computes academic grades based on user input  
+
+---
+
+## ✅ Features Checklist
+
+- ✔️ Multi-screen navigation  
+- ✔️ Form validation  
+- ✔️ Real-time calculation logic  
+- ✔️ Responsive and clean UI  
+- ✔️ Modular Flutter structure  
+- ✔️ Cross-platform support (Web & Desktop)
+
+---
+
+## 🚀 How to Run the Project
+
+```cmd
+:: 1. Clone the repository
+git clone https://github.com/GR4C3FR/MiniJiraBoard.git
+
+:: 2. Navigate to project folder
+cd MiniJiraBoard
+
+:: 3. Check Flutter setup and fix errors if needed
+flutter doctor
+
+:: 4. Install project dependencies
+flutter pub get
+
+:: 5. Run the application
+flutter run
+
+:: 6. Select a device (Chrome, Windows, Android Emulator, Edge, etc.)
