@@ -19,7 +19,6 @@ The application consists of the following modules:
 - ✅ **BMI Checker** - Calculates Body Mass Index and displays health classification  
 - ✅ **Expense Tracker** - Tracks and manages daily expenses  
 - ✅ **Grade Calculator** - Computes academic grades based on user input  
-&nbsp;
 ---
 &nbsp;
 ## Assigned Roles & Tasks
@@ -29,7 +28,6 @@ The application consists of the following modules:
 - **Ericka Mae Gavino** - Step 4 Implementation  
 - **Alexander Manabat** - Step 5 Implementation & Documentation  
 - **Carla Joves** - Step 6 Implementation & Documentation  
-&nbsp;
 ---
 &nbsp;
 ## ✅ Features Checklist
